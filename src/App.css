@@ -8,10 +8,16 @@
     margin: 0px;
     box-sizing: border-box;
 }
-.mb{
-    margin-bottom: 3rem;
-}
+
 .card-inner-a{
     text-decoration: none;
     color: inherit;
+}
+.cart-products-main{
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    max-height: 77vh;
+}
+.cart-products-main::-webkit-scrollbar {
+    display: none;
 }

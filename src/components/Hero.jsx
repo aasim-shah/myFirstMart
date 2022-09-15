@@ -16,8 +16,7 @@ function Hero() {
      modules={[ Pagination]}
      slidesPerView={1}
      pagination={{ clickable: true }}
-     onSwiper={(swiper) => console.log(swiper)}
-     onSlideChange={() => console.log('slide change')}
+ 
     >
       <SwiperSlide className='slider'>Slide 1</SwiperSlide>
       <SwiperSlide className='slider'>Slide 2</SwiperSlide>

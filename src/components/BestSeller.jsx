@@ -33,16 +33,18 @@ export default function BestSeller() {
   
   return (
     <>
-  <div className="allCategories-heading">
+  <div className="allCategories-heading hidden md:flex">
         <p className="heading-text">Top Sales</p>
+      </div>
+      <div className="onPhone block md:hidden">
+        <p className="wings text-center relative my-4">Top Sales</p>
       </div>
   <Swiper
   className='w-11/12 hidden md:flex'
      spaceBetween={20}
     
      slidesPerView={3}
-     onSwiper={(swiper) => console.log(swiper)}
-     onSlideChange={() => console.log('slide change')}
+
     >
             <div className="card-container">
      {
@@ -85,8 +87,7 @@ export default function BestSeller() {
   className='w-11/12 flex md:hidden'
      spaceBetween={20}
      slidesPerView={1}
-     onSwiper={(swiper) => console.log(swiper)}
-     onSlideChange={() => console.log('slide change')}
+
     >
             <div className="card-container">
      {

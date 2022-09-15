@@ -13,7 +13,6 @@ export default function SkeltonCard() {
         <p className="text-skelton "></p>   
         </div>
         <div className="flex mt-3">
-        <button className="skelton text-white px-2 py-1  mx-auto rounded-md">Buy</button>
         <button className="skelton text-white px-2 py-1 mx-auto rounded-md">Add To Bag</button>
         </div>
 </div>

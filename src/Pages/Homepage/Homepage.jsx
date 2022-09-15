@@ -11,11 +11,17 @@ import Highlights from '../../components/Highlights'
 import Footer from '../../components/Footer'
 import BestSeller from '../../components/BestSeller'
 import TopOffers from '../../components/TopOffers'
-
+import NewArrivals from '../../components/NewArrivals'
+import CartComponent from '../../components/CartComponent'
+import {useDispatch ,useSelector} from 'react-redux'
 
 
 
 function Homepage() {
+  const dispatch = useDispatch()
+  const cart = useSelector((state) => state.cart)
+  const cartHidden = cart.hidden;
+
   return (
     <>
     <Navbar/>
@@ -23,9 +29,10 @@ function Homepage() {
     <TopCategories/>
     <SuggestedProducts/>
     <AllCategories/>
-    <BestSeller/>
-    <Banner/>
+    {/* <BestSeller/> */}
     <TopOffers/>
+    <NewArrivals/>
+    <Banner/>
     <Highlights/>
     <Footer/>
     </>

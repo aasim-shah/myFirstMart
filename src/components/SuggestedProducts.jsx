@@ -1,10 +1,21 @@
 
 import axios from 'axios';
 import {useState , useEffect} from 'react';
+import {FaPlus} from 'react-icons/fa'
 import { Link } from 'react-router-dom';
 import SkeltonCard from './SkeltonCard';
+import { useDispatch  } from 'react-redux/es/exports';
+import {
+  addToCart,
+} from "../features/cartSlice";
+
+
+
+
 function SuggestedProducts() {
   const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
+
 
 // get data from api
   const getProducts = async () => {
@@ -34,7 +45,7 @@ function SuggestedProducts() {
             <small className="free-courses">{product.category}</small>
             <div className="card-title">
               {product.title.slice(0, 36) + " ..."}
-            </div>
+            </div></Link>
             <div className="card-footer">
               <div className="card-footer-left">
                 <div className="card-price">
@@ -46,12 +57,14 @@ function SuggestedProducts() {
                   <span className="del-text ml">{Number(product.price * 0.2).toFixed(2)}%</span>
                 </div>
   
-                <div className="card-ratings mt-2">
-                  <span className="rating-stars">{product.rating.rate}<i className="fa-solid fa-star text-sm ml-2 text-yellow-600"></i> </span>
-                  <span className="rating-count ml">({product.rating.count})</span>
+                <div className="card-ratings flex justify-between items-center mt-2">
+                <div className="l">  <span className="rating-stars">{product.rating.rate}<i className="fa-solid fa-star text-sm ml-2 text-yellow-600"></i> </span>
+                  <span className="rating-count text-[13px] ml-1">{product.rating.count}</span></div>
+                  <button onClick={()=>{dispatch(addToCart({qty : 1, product : product}))}} className='border-2 z-[4] border-[#355C7D] hover:bg-[#355C7D] hover:text-white   flex flex-row justify-between items-center rounded-[2rem] px-3 py-1'><FaPlus/><span className='ml-3'>Add</span></button>
+
                 </div>
               </div>
-            </div></Link>
+            </div>
           </div>
   ))) : ( 
 <>
@@ -91,7 +104,7 @@ function SuggestedProducts() {
             <small className="free-courses">{product.category}</small>
             <div className="text-sm text-blue-400">
               {product.title.slice(0, 25) + " ..."}
-            </div>
+            </div></Link>
             <div className="card-footer ml-2">
                 
                 <div className="card-discounted-price">
@@ -102,8 +115,8 @@ function SuggestedProducts() {
                   <span>RS : </span>
                   <span className='text-green-800'>{"$"+product.price}</span>
                 </div>
-              
-            </div></Link>
+                <button onClick={()=>{dispatch(addToCart({qty : 1, product : product}))}} className=' flex flex-row justify-center py-1 px-2 rounded-md mt-2 text-white font-bold  bg-[#355C7D]  w-full items-center '><FaPlus/><span className='ml-3'>Add</span></button>
+            </div>
           </div>
   ))) : ( 
 <>

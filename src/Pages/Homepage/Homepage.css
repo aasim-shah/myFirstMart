@@ -388,7 +388,26 @@ text-decoration: line-through;
     flex-direction: column;
     padding: 1rem 0px;
 }
+.wings::before{
+    content: '';
+    width: 7rem;
+    position: absolute;
+    height: 4px;
+    top: 9px;
+    left: 10px;
+    background-color:  #355b7d84;
 
+}
+.wings::after{
+    content: '';
+    width: 7rem;
+    position: absolute;
+    height: 4px;
+    top: 9px;
+    right: 10px;
+    background-color: #355b7d84;
+
+}
 .td{
     font-size: 14px;
     font-weight: 570;
@@ -400,13 +419,104 @@ text-decoration: line-through;
 .scroll-btn{
     position: absolute;
     font-size: 2rem;
-    right:3rem;
+    right:2rem;
     padding: 0.3rem 1rem;
     color: white;
+    bottom: 6rem;
     scroll-behavior: smooth;
     border-radius: 2px;
     background-color: #355b7d;
 }
+
+.iconBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.iconBtn-search:focus{
+    background-color: #7de9c4;
+}
+.iconBtn small {
+    font-size: 10px;
+}
+.iconBtn-search{
+    position: absolute;
+    left: 44%;
+    background-color: #02345f;
+    width: 4rem;
+    opacity: 1;
+    height: 4rem;
+    z-index: 4;
+    bottom: 1rem;
+    border-radius: 2rem;
+}
+.iconBtn-cart{
+    position: relative;
+}
+.iconBtn-count{
+    position: absolute;
+    background-color: #61c9a5;
+    width: 1.5rem;
+    height: 1.5rem;
+    left: 13px;
+    border-radius: 2rem;
+    color: black;
+    font-size: 12px;
+    bottom: 26px;
+    font-weight: 600;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+#searchBarPhone{
+    transition: all 300ms ease-in-out;
+    top: -10rem;
+}
+#bottomTabbar{
+    transition: all 200ms ease-in;
+}
+#pcart-container{
+    transition: all 2s ease-in;
+
+}
+
+#overlay{
+background-color: #000000;
+width: 100%;
+height: 500vh;
+position: absolute;
+top: 0px;
+opacity: 0.6;
+z-index: 2;
+}
+.scrolable{
+    overflow-y: scroll;
+    max-height: 40vh;
+    scroll-behavior: smooth;
+}
+
+.showSrcResults{
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+} 
+
+.showSrcResults::-webkit-scrollbar {
+    display: none;
+}
+.swiper-pagination {
+    /* position: absolute; */
+    text-align: end !important;
+    /* transition: .3s opacity; */
+    /* transform: translate3d(0,0,0); */
+    /* z-index: 10; */
+    padding-right: 5rem;
+}
+.swiper-pagination-bullet {
+    height: 13px !important;
+    width: 13px !important;
+}
+
 
 @media only screen and (max-width: 750px) {
     .banner-inner{
@@ -422,4 +532,17 @@ text-decoration: line-through;
     .card-inner {
     width: auto;
     }
+    #overlay{
+      
+        height: 650vh;
+        }
+    .showSrcResultsPhone{
+        top: 7rem;
+        background-color: #355b7d;
+        display:  flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
   }
+

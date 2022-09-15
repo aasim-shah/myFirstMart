@@ -30,7 +30,7 @@ export default function Signuppage() {
   return (
     <>
       <div className="back-navigator">
-      <span onClick={()=>navigate(-1)}><i class="fa-solid fa-arrow-left-long text-xl"></i></span>
+      <span onClick={()=>navigate(-1)}><i className="fa-solid fa-arrow-left-long text-xl"></i></span>
       <span className="logo">LOGO</span>
     </div>
       <div className="signup-container ">

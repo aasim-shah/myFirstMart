@@ -5,19 +5,49 @@ import {
 } from "firebase/auth";
 import { Auth, GoogleProvider } from "../../firebase";
 import { Link, useNavigate } from "react-router-dom";
+import { db } from "../../firebase";
 import "./Loginpage.css";
+import { doc, getDoc } from "firebase/firestore";
+import { useSelector , useDispatch } from "react-redux";
+import { loggedIn, loggedOut  } from "../../features/authSlice";
+
+
 
 export default function Loginpage() {
+  const dispatch = useDispatch()
+  const auth = useSelector((state) => state.auth)
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [errors, setErrors] = useState("");
   const [password, setPassword] = useState("");
+
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const user = await signInWithEmailAndPassword(Auth, email, password);
       if (user.user.uid) {
-        return navigate("/");
+      
+        const docRef = doc(db, "users", user.user.uid);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          dispatch(loggedIn({user , isAdmin : docSnap.data().isAdmin })) 
+        navigate("/");
+        setTimeout(() => {
+          dispatch(loggedOut())
+        }, 1000 * 60 * 60 * 3 );     
+        } else {
+          dispatch(loggedIn({user , isAdmin : false })) 
+          navigate("/");
+          setTimeout(() => {
+            dispatch(loggedOut())
+          }, 1000 * 60 * 60 * 3 );    
+        }
+
+
+           
       }
     } catch (error) {
       console.log(error);
@@ -27,18 +57,22 @@ export default function Loginpage() {
 
   const handleGoogleLogin = async () => {
     const result = await signInWithPopup(Auth, GoogleProvider);
-    console.log(result);
+    dispatch(loggedIn(result.user)) 
+    setTimeout(() => {
+      dispatch(loggedOut())
+    }, 1000 * 60 * 60 * 3 ); 
   };
 
   return (
     <>
     <div className="back-navigator">
-      <span onClick={() => navigate(-1)}><i class="fa-solid fa-arrow-left-long text-xl"></i></span>
+      <span onClick={() => navigate(-1)}><i className="fa-solid fa-arrow-left-long text-xl"></i></span>
       <span className="logo">LOGO</span>
     </div>
       <div className="login-container ">
         <img className="bg-img" src="images/login.jpg" alt="" />
         <div className="login-form-div">
+          <p className="">{auth.isAuthanticated}</p>
           <p className="text-white mt-4 font-bold">LOGIN To AA-MART</p>
           <form className="login-form" onSubmit={handleSubmit}>
             <input

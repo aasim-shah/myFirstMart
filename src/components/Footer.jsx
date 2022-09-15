@@ -1,13 +1,28 @@
 import React from 'react'
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import BottomTabBarPhone from './BottomTabBarPhone';
+import {  useSelector } from 'react-redux/es/exports';
+import CartOnPhonescreen from './CartOnPhonescreen';
+
 export default function Footer() {
+  const cart = useSelector((state)=>state.cart)
+  const cartHidden = cart.hidden;
   const handleScroll = ()=> window.scrollTo({
     top: 0,
     behavior: 'smooth',
   })
   return (
     <>
-    <div className="footer-container bg-gray-100 py-20 ">
+    <ToastContainer
+position="top-right"
+autoClose={1000}
+hideProgressBar={true}
+newestOnTop={false}
+rtl={false}
+/>
+    <div className="footer-container  bg-gray-100 py-20 ">
 
         <div className="footer-inner grid grid-cols-1 md:grid-cols-3 w-11/12 mx-auto">
           <div className=" grid-col col-span-2  flex flex-row justify-around">
@@ -41,17 +56,19 @@ export default function Footer() {
               <p className='text-sm mt-2'>Sign up to receive a 10% discount on your next order.</p>
             </div>
 
-            <div className="icons text-[24px] flex justify-around mt-5 w-5/12 mx-auto">
-            <i class="fa-brands fa-facebook "></i>
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-twitter"></i>
+            <div className="icons  mb-12 text-[24px] flex justify-around mt-5 w-5/12 mx-auto">
+            <i className="fa-brands fa-facebook "></i>
+            <i className="fa-brands fa-instagram"></i>
+            <i className="fa-brands fa-twitter"></i>
             </div>
           </div>
 
         </div>
 
-        <button className='scroll-btn' onClick={handleScroll}><i class="fa-solid fa-chevron-up"></i></button>
+        <button className='scroll-btn ' onClick={handleScroll}><i className="fa-solid fa-chevron-up"></i></button>
     </div>
+    <BottomTabBarPhone/>
+    {cart && cartHidden ? (<CartOnPhonescreen/>) : ('')}
 
     </>
   )
