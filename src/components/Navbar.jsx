@@ -49,7 +49,7 @@ function Navbar() {
       <div className="black-strap">Limited Stocks remaining. Shop Now</div>
       <div className="nav py-3 px-6">
         <div>
-          <Link to="/"> LOGO</Link>
+          <Link to="/"> Enn Mart</Link>
         </div>
         <div className="search-bar hidden relative md:block">
           <input
