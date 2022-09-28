@@ -33,8 +33,8 @@ export default function Signuppage() {
       <span onClick={()=>navigate(-1)}><i className="fa-solid fa-arrow-left-long text-xl"></i></span>
       <span className="logo">LOGO</span>
     </div>
-      <div className="signup-container ">
-        <img className="bg-img" src="images/login.jpg" alt="" />
+      <div className="signup-container bg-[#355C7D]  md:bg-transparent">
+        <img className="bg-img hidden md:flex" src="images/login.jpg" alt="" />
         <div className="signup-form-div">
           <p className="text-white mt-4 font-bold">signup To AA-MART</p>
           <form className="signup-form" onSubmit={handleSubmit}>

@@ -6,6 +6,11 @@ import {
   removeAll,
   removeItem,
 } from "../features/cartSlice";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import "swiper/css";
+import { Navigation } from "swiper";
+
+import "swiper/css/navigation";
 
 export default function ViewProductHero({ product }) {
   const dispatch = useDispatch();
@@ -48,7 +53,14 @@ export default function ViewProductHero({ product }) {
             <div className="viewproduct-hero-inner-left  ">
               <div className="inner-grid mt-3">
                 <div className="product-img ">
-                  <img src={product.image} alt="" className="" />
+                  <Swiper navigation={true} modules={[Navigation]} className="w-60">
+                    <SwiperSlide className="">
+                  <img src={product.image} alt="" className="w-24" />
+                    </SwiperSlide>
+                    <SwiperSlide className="">
+                  <img src={product.image} alt="" className="w-24" />
+                    </SwiperSlide>
+                  </Swiper>
                 </div>
                 <div className="product-details ">
                   <div className="product-title">
@@ -81,7 +93,7 @@ export default function ViewProductHero({ product }) {
                         <p className="mb-3 text-[#355C7D]">Colour </p>
                         <label htmlFor="red-l">
                           <input type="radio" name="color" id="red-l" />
-                          <span className="color-text">red</span>
+                          <span className="color-text">redsdf</span>
                         </label>
                         <label htmlFor="blue-l">
                           <input type="radio" name="color" id="blue-l" />
@@ -130,7 +142,7 @@ export default function ViewProductHero({ product }) {
 
               {product && !product.colours ? (
                 <div className="atc-color ml-4 my-6">
-                  <p className="mb-3 text-[#355C7D]">Colour </p>
+                  <p className="mb-3 text-[#355C7D]">Colour  </p>
                   <label htmlFor="red">
                     <input type="radio" name="color" id="red" />
                     <span className="color-text">red</span>
@@ -271,10 +283,17 @@ export default function ViewProductHero({ product }) {
         
         {product ? ( <div className="flex flex-col ">
           <div className="">
+            <Swiper  navigation={true} modules={[Navigation]}>
+              <SwiperSlide >
             <img src={product.image} className="h-[50vh] rounded-md w-[45vh] mx-auto " alt="" />
+              </SwiperSlide>
+              <SwiperSlide >
+            <img src={product.image} className="h-[50vh] rounded-md w-[45vh] mx-auto " alt="" />
+              </SwiperSlide>
+            </Swiper>
           </div>
           <div className="title my-3 px-3">
-            <p className="font-bold my-4 text-blue-300 ">
+            <p className="font-bold my-4 text-[#355C7D] ">
               {product.title}
             </p>
           </div>
@@ -296,44 +315,47 @@ export default function ViewProductHero({ product }) {
 
 
             <p className="ml-3 text-gray-400">Sizes : </p>
-          <div id="pScreen-sizes" className="flex flex-row gap-5 mb-4 justify-center ">
+          <div id="pScreen-sizes" className=" atc-size flex flex-row gap-5 mb-4 justify-center ">
               <label htmlFor="size1" className="inline-flex justify-center items-center w-10 h-10 rounded-md border-2 border-grey-400 ">
+              <input type="radio" name="color"  className="" id="size1" />
                 <span className="text-[12px] font-bold">sx</span>
-              <input type="radio" name="color"  className="hidden" id="size1" />
               </label>
               <label htmlFor="size2" className="inline-flex justify-center items-center w-10 h-10 rounded-md border-2 border-grey-400 ">
                 <span className="text-[12px] font-bold">md</span>
-              <input type="radio" name="color"  className="hidden" id="size2" />
+              <input type="radio" name="color"  className="" id="size2" />
               </label>
               <label htmlFor="size3" className="inline-flex justify-center items-center w-10 h-10 rounded-md border-2 border-grey-400 ">
                 <span className="text-[12px] font-bold">lg</span>
-              <input type="radio" name="color"  className="hidden" id="size3" />
+              <input type="radio" name="color"  className="" id="size3" />
               </label>
-              <label htmlFor="size3" className="inline-flex justify-center items-center w-10 h-10 rounded-md border-2 border-grey-400 ">
+              <label htmlFor="size4" className="inline-flex justify-center items-center w-10 h-10 rounded-md border-2 border-grey-400 ">
                 <span className="text-[12px] font-bold">lg</span>
-              <input type="radio" name="color"  className="hidden" id="size3" />
+              <input type="radio" name="color"  className="" id="size4" />
               </label>
+            
           </div>
 
 
 
           <p className="ml-3 text-gray-400">Colours : </p>
-          <div id="pScreen-colors" className="flex flex-row gap-5 mb-4 justify-center ">
-            <div className="color1">
-              <label htmlFor="clr1" className="inline-block w-12 h-12 border-2 border-white bg-blue-300 rounded-md">
-              <input type="radio" name="color" className="hidden" id="clr1" />
+          <div id="pScreen-colors" className="atc-product flex flex-row gap-5 mb-4 justify-center ">
+              <label htmlFor="clr1" className="inline-flex justify-center items-center  w-12 h-12 border-2 border-white bg-blue-300 rounded-md">
+              <span className="text-[12px] font-bold">blue</span>
+              <input type="radio" name="color" className="" id="clr1" />
               </label>
-            </div>
-            <label htmlFor="clr2" className="inline-block w-12 h-12 border-2 border-white bg-red-300 rounded-md">
-              <input type="radio" name="color" className="hidden" id="clr2" />
+            <label htmlFor="clr2" className="inline-flex justify-center items-center w-12 h-12 border-2 border-white bg-red-300 rounded-md">
+            <span className="text-[12px] font-bold">red</span>
+              <input type="radio" name="color" className="" id="clr2" />
               </label>
-              <label htmlFor="clr3" className="inline-block w-12 h-12 border-2 border-white bg-green-300 rounded-md">
-              <input type="radio" name="color" className="hidden" id="clr3" />
+              <label htmlFor="clr3" className="inline-flex justify-center items-center  w-12 h-12 border-2 border-white bg-green-300 rounded-md">
+              <span className="text-[12px] font-bold">green</span>
+
+              <input type="radio" name="color" className="" id="clr3" />
               </label>
           </div>
           <div className="flex gap-2 mx-2">
-            <button className="border-2 border-blue-500 py-2 rounded-md w-full">buy</button>
-            <button className="bg-violet-400 py-2 w-full rounded-md text-white font-bold">Add to Bag</button>
+            <button className="border-2 border-[#355C7D] py-2 rounded-md w-full">Buy Now</button>
+            <button className="bg-[#355C7D] py-2 w-full rounded-md text-white font-bold">Add to Bag</button>
           </div>
         </div>) : ('')}
        

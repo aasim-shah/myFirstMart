@@ -81,7 +81,17 @@
     border: 1px solid gray;
     
   }
+
+  .atc-product label input {
+    position: absolute;
+    opacity: 0;
+  }
   
+  
+  .atc-product   label:focus-within {
+    outline: 2px solid #355C7D;
+  }
+
   .atc-color   label input {
     position: absolute;
     opacity: 0;
@@ -127,4 +137,8 @@
   border-left: 1px solid #355C7D;
   height: 88%;
   top: 1rem;
+}
+.swiper-button-prev , .swiper-button-next{
+  color: #bacad7;
+  margin: 0px 1rem;
 }

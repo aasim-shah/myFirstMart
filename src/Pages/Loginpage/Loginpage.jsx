@@ -69,8 +69,8 @@ export default function Loginpage() {
       <span onClick={() => navigate(-1)}><i className="fa-solid fa-arrow-left-long text-xl"></i></span>
       <span className="logo">LOGO</span>
     </div>
-      <div className="login-container ">
-        <img className="bg-img" src="images/login.jpg" alt="" />
+      <div className="login-container bg-[#355C7D]  md:bg-transparent">
+        <img className="bg-img hidden md:flex" src="images/login.jpg" alt="" />
         <div className="login-form-div">
           <p className="">{auth.isAuthanticated}</p>
           <p className="text-white mt-4 font-bold">LOGIN To AA-MART</p>
