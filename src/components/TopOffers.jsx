@@ -92,7 +92,7 @@ export default function TopOffers() {
         <small>From</small>
         <span className='ml-2'> Rs.3432</span>
        </div>
-       <button onClick={()=>{dispatch(addToCart({qty : 1, product : product}))}} className=' flex flex-row justify-center py-1 w-20  py-2 rounded-md mt-2 text-white font-bold  bg-[#355C7D]  mx-auto items-center '><FaCartPlus/></button>
+       {/* <button onClick={()=>{dispatch(addToCart({qty : 1, product : product}))}} className=' flex flex-row justify-center py-1 w-20  py-2 rounded-md mt-2 text-white font-bold  bg-[#355C7D]  mx-auto items-center '><FaCartPlus/></button> */}
     </SwiperSlide>
     ))}
 </Swiper>

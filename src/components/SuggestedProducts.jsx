@@ -60,7 +60,7 @@ function SuggestedProducts() {
                 <div className="card-ratings flex justify-between items-center mt-2">
                 <div className="l">  <span className="rating-stars">{product.rating.rate}<i className="fa-solid fa-star text-sm ml-2 text-yellow-600"></i> </span>
                   <span className="rating-count text-[13px] ml-1">{product.rating.count}</span></div>
-                  <button onClick={()=>{dispatch(addToCart({qty : 1, product : product}))}} className='border-2 z-[4] border-[#355C7D] hover:bg-[#355C7D] hover:text-white   flex flex-row justify-between items-center rounded-[2rem] px-3 py-1'><FaPlus/><span className='ml-3'>Add</span></button>
+                  {/* <button onClick={()=>{dispatch(addToCart({qty : 1, product : product}))}} className='border-2 z-[4] border-[#355C7D] hover:bg-[#355C7D] hover:text-white   flex flex-row justify-between items-center rounded-[2rem] px-3 py-1'><FaPlus/><span className='ml-3'>Add</span></button> */}
 
                 </div>
               </div>
@@ -115,7 +115,7 @@ function SuggestedProducts() {
                   <span>RS : </span>
                   <span className='text-green-800'>{"$"+product.price}</span>
                 </div>
-                <button onClick={()=>{dispatch(addToCart({qty : 1, product : product}))}} className=' flex flex-row justify-center py-1 px-2 rounded-md mt-2 text-white font-bold  bg-[#355C7D]  w-full items-center '><FaPlus/><span className='ml-3'>Add</span></button>
+                {/* <button onClick={()=>{dispatch(addToCart({qty : 1, product : product}))}} className=' flex flex-row justify-center py-1 px-2 rounded-md mt-2 text-white font-bold  bg-[#355C7D]  w-full items-center '><FaPlus/><span className='ml-3'>Add</span></button> */}
             </div>
           </div>
   ))) : ( 
