@@ -317,20 +317,20 @@ export default function ViewProductHero({ product }) {
             <p className="ml-3 text-gray-400">Sizes : </p>
           <div id="pScreen-sizes" className=" atc-size flex flex-row gap-5 mb-4 justify-center ">
               <label htmlFor="size1" className="inline-flex justify-center items-center w-10 h-10 rounded-md border-2 border-grey-400 ">
-              <input type="radio" name="color"  className="" id="size1" />
+              <input type="radio" name="size"  className="" id="size1" />
                 <span className="text-[12px] font-bold">sx</span>
               </label>
               <label htmlFor="size2" className="inline-flex justify-center items-center w-10 h-10 rounded-md border-2 border-grey-400 ">
                 <span className="text-[12px] font-bold">md</span>
-              <input type="radio" name="color"  className="" id="size2" />
+              <input type="radio" name="size"  className="" id="size2" />
               </label>
               <label htmlFor="size3" className="inline-flex justify-center items-center w-10 h-10 rounded-md border-2 border-grey-400 ">
                 <span className="text-[12px] font-bold">lg</span>
-              <input type="radio" name="color"  className="" id="size3" />
+              <input type="radio" name="size"  className="" id="size3" />
               </label>
               <label htmlFor="size4" className="inline-flex justify-center items-center w-10 h-10 rounded-md border-2 border-grey-400 ">
-                <span className="text-[12px] font-bold">lg</span>
-              <input type="radio" name="color"  className="" id="size4" />
+                <span className="text-[12px] font-bold">xl</span>
+              <input type="radio" name="size"  className="" id="size4" />
               </label>
             
           </div>
@@ -355,7 +355,7 @@ export default function ViewProductHero({ product }) {
           </div>
           <div className="flex gap-2 mx-2">
             <button className="border-2 border-[#355C7D] py-2 rounded-md w-full">Buy Now</button>
-            <button className="bg-[#355C7D] py-2 w-full rounded-md text-white font-bold">Add to Bag</button>
+            <button onClick={()=>{handleATC(product)}} className="bg-[#355C7D] py-2 w-full rounded-md text-white font-bold">Add to Bag</button>
           </div>
         </div>) : ('')}
        

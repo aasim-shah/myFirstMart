@@ -34,10 +34,19 @@ setTimeout(() => {
         </div>
 
         <div className="cart-products-main w-[95%] mx-auto flex flex-col ">
+          
           <table className="  text-white ">
             {cart && itemsInCart.length > 0 ? (
+              
               itemsInCart.map((cartItem) => (
+                
                 <>
+                <thead className="text-yellow-400">
+                  <th>Image</th>
+                  <th>Name</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                </thead>
                   <tbody>
                     <tr key={cartItem.id} className="">
                       <td>&nbsp;</td>
