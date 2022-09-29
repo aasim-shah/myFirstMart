@@ -32,6 +32,18 @@ export default function ViewProductHero({ product }) {
     dispatch(addToCart(tempProduct));
   };
 
+
+  const [clr, setClr] = useState("clr2");
+  const [size, setSize] = useState("lg");
+
+const handleClr = (event) => {
+    setClr(event.target.value)
+    console.log(event.target.value)
+};
+const handleSize = (event) => {
+  setSize(event.target.value)
+};
+
   return (
     <>
       {product ? (
@@ -87,23 +99,7 @@ export default function ViewProductHero({ product }) {
                       RS :234 <span className="ml-4 text-[1rem]">-30%</span>
                     </span>
                   </div>
-                  {product && !product.colors ? (
-                    <div className="product-colors">
-                      <div className="atc-color ml-4 my-6">
-                        <p className="mb-3 text-[#355C7D]">Colour </p>
-                        <label htmlFor="red-l">
-                          <input type="radio" name="color" id="red-l" />
-                          <span className="color-text">redsdf</span>
-                        </label>
-                        <label htmlFor="blue-l">
-                          <input type="radio" name="color" id="blue-l" />
-                          <span className="color-text">blue</span>
-                        </label>
-                      </div>
-                    </div>
-                  ) : (
-                    " no colurs"
-                  )}
+                
                 </div>
               </div>
 
@@ -117,23 +113,27 @@ export default function ViewProductHero({ product }) {
                 <p className="px-2 py-3">{product.title}</p>
               </div>
               {product && !product.sizes ? (
-                <div className="atc-size ml-4 my-3">
+                <div className=" ml-4 my-3">
                   <p className="mb-3 text-[#355C7D]">sizes</p>
-                  <label htmlFor="sx">
-                    <input type="radio" className="" name="size" id="sx" />
+
+                    <input type="radio" className="" name="desk-size" id="sx" value="sx"  onChange={handleSize} checked={size === 'sx'}/>
+                  <label htmlFor="sx" className="lbl lbl-box" >
                     <span className="size-text">sx</span>
                   </label>
-                  <label htmlFor="s">
-                    <input type="radio" name="size" id="s" />
+
+                    <input type="radio" name="desk-size" id="s" value="s" onChange={handleSize} checked={size === 's'}/>
+                  <label htmlFor="s"  className="lbl lbl-box">
                     <span className="size-text">s</span>
                   </label>
-                  <label htmlFor="m">
-                    <input type="radio" name="size" id="m" />
-                    <span className="size-text">m</span>
+
+                    <input type="radio" name="desk-size" id="md" value="md" onChange={handleSize} checked={size === 'md'}/>
+                  <label htmlFor="m"  className="lbl lbl-box">
+                    <span className="size-text">md</span>
                   </label>
-                  <label htmlFor="l">
-                    <input type="radio" name="size" id="l" />
-                    <span className="size-text">l</span>
+
+                    <input type="radio" name="desk-size" id="lg" value="lg" onChange={handleSize} checked={size === 'lg'}/>
+                  <label htmlFor="l"  className="lbl lbl-box">
+                    <span className="size-text">lg</span>
                   </label>
                 </div>
               ) : (
@@ -141,14 +141,15 @@ export default function ViewProductHero({ product }) {
               )}
 
               {product && !product.colours ? (
-                <div className="atc-color ml-4 my-6">
+                <div className="ml-4 my-6">
                   <p className="mb-3 text-[#355C7D]">Colour  </p>
-                  <label htmlFor="red">
-                    <input type="radio" name="color" id="red" />
-                    <span className="color-text">red</span>
+                    <input type="radio" name="colorr" id="red"  className="hidden" value="clr1" checked={clr === 'clr1'} onChange={handleClr} />
+                  <label htmlFor="red" className="lbl lbl-box ml-6">
+                    <span className="color-text">redd</span>
                   </label>
-                  <label htmlFor="blue">
-                    <input type="radio" name="color" id="blue" />
+
+                    <input type="radio" name="colorr" id="blue" checked={clr === 'clr2'}  className="hidden" value="clr2"  onChange={handleClr}/>
+                  <label htmlFor="blue" className="lbl lbl-box ml-6">
                     <span className="color-text">blue</span>
                   </label>
                 </div>
@@ -220,11 +221,11 @@ export default function ViewProductHero({ product }) {
                     <div className="atc-color ml-4 my-6 ">
                       <p className="mb-3 text-[#355C7D]">Colour </p>
                       <label htmlFor="red-l" className="skelton">
-                        <input type="radio" name="color" id="red-l" />
+                        <input type="radio" name="" id="red-l" />
                         <span className="color-text "></span>
                       </label>
                       <label htmlFor="blue-l" className="skelton">
-                        <input type="radio" name="color" id="blue-l" />
+                        <input type="radio" name="" id="blue-l" />
                         <span className="color-text skelton"></span>
                       </label>
                     </div>
@@ -315,22 +316,27 @@ export default function ViewProductHero({ product }) {
 
 
             <p className="ml-3 text-gray-400">Sizes : </p>
-          <div id="pScreen-sizes" className=" atc-size flex flex-row gap-5 mb-4 justify-center ">
-              <label htmlFor="size1" className="inline-flex justify-center items-center w-10 h-10 rounded-md border-2 border-grey-400 ">
-              <input type="radio" name="size"  className="" id="size1" />
+          <div id="pScreen-sizes" className="flex flex-row gap-5 mb-4 justify-center ">
+
+              <input type="radio" name="size"   className="hidden" id="size1" value='sx' onChange={handleSize} checked={size === 'sx'} />
+              <label htmlFor="size1" className="inline-flex lbl justify-center items-center w-10 h-10 rounded-md border-2 border-grey-400 ">
                 <span className="text-[12px] font-bold">sx</span>
               </label>
-              <label htmlFor="size2" className="inline-flex justify-center items-center w-10 h-10 rounded-md border-2 border-grey-400 ">
+
+              <input type="radio" name="size"  className="hidden" id="size2"  value='md' onChange={handleSize} checked={size === 'md'} />
+              <label htmlFor="size2" className="inline-flex lbl justify-center items-center w-10 h-10 rounded-md border-2 border-grey-400 ">
                 <span className="text-[12px] font-bold">md</span>
-              <input type="radio" name="size"  className="" id="size2" />
               </label>
-              <label htmlFor="size3" className="inline-flex justify-center items-center w-10 h-10 rounded-md border-2 border-grey-400 ">
+
+
+              <input type="radio" name="size"  className="hidden" id="size3"  value='lg' onChange={handleSize} checked={size === 'lg'} />
+              <label htmlFor="size3" className="inline-flex lbl justify-center items-center w-10 h-10 rounded-md border-2 border-grey-400 ">
                 <span className="text-[12px] font-bold">lg</span>
-              <input type="radio" name="size"  className="" id="size3" />
               </label>
-              <label htmlFor="size4" className="inline-flex justify-center items-center w-10 h-10 rounded-md border-2 border-grey-400 ">
+
+              <input type="radio" name="size"  className="hidden" id="size4" value='xl' onChange={handleSize} checked={size === 'xl'}  />
+              <label htmlFor="size4" className="inline-flex lbl justify-center items-center w-10 h-10 rounded-md border-2 border-grey-400 ">
                 <span className="text-[12px] font-bold">xl</span>
-              <input type="radio" name="size"  className="" id="size4" />
               </label>
             
           </div>
@@ -338,21 +344,27 @@ export default function ViewProductHero({ product }) {
 
 
           <p className="ml-3 text-gray-400">Colours : </p>
-          <div id="pScreen-colors" className="atc-product flex flex-row gap-5 mb-4 justify-center ">
-              <label htmlFor="clr1" className="inline-flex justify-center items-center  w-12 h-12 border-2 border-white bg-blue-300 rounded-md">
+          <div id="pScreen-colors" className="flex flex-row gap-5 mb-4 justify-center ">
+              <input type="radio"  name="color" checked={clr === 'clr1'}  className="hidden" value="clr1" id="clr1" onChange={handleClr} />
+              <label htmlFor="clr1" className="lbl inline-flex justify-center items-center  w-12 h-12 border-2 border-white bg-blue-300 rounded-md">
               <span className="text-[12px] font-bold">blue</span>
-              <input type="radio" name="color" className="" id="clr1" />
               </label>
-            <label htmlFor="clr2" className="inline-flex justify-center items-center w-12 h-12 border-2 border-white bg-red-300 rounded-md">
+
+              <input type="radio"  name="color" checked={clr === 'clr2'}  className="hidden" value="clr2" id="clr2" onChange={handleClr}/>
+            <label htmlFor="clr2" className=" lbl inline-flex justify-center items-center w-12 h-12 border-2 border-white bg-red-300 rounded-md">
             <span className="text-[12px] font-bold">red</span>
-              <input type="radio" name="color" className="" id="clr2" />
               </label>
-              <label htmlFor="clr3" className="inline-flex justify-center items-center  w-12 h-12 border-2 border-white bg-green-300 rounded-md">
+              
+              <input type="radio" name="color" checked={clr === 'clr3'}  className="hidden" value="clr3" id="clr3" onChange={handleClr}/>
+              <label htmlFor="clr3" className="lbl inline-flex justify-center items-center  w-12 h-12 border-2 border-white bg-green-300 rounded-md">
               <span className="text-[12px] font-bold">green</span>
 
-              <input type="radio" name="color" className="" id="clr3" />
               </label>
           </div>
+
+
+
+
           <div className="flex gap-2 mx-2">
             <button className="border-2 border-[#355C7D] py-2 rounded-md w-full">Buy Now</button>
             <button onClick={()=>{handleATC(product)}} className="bg-[#355C7D] py-2 w-full rounded-md text-white font-bold">Add to Bag</button>

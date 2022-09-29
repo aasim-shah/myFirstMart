@@ -142,3 +142,16 @@
   color: #bacad7;
   margin: 0px 1rem;
 }
+.lbl-box{
+  display: inline-flex;
+  width: 3rem;
+  height: 2.4rem;
+  border-radius: 3px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(128, 128, 128, 0.412);
+}
+
+input[type=radio]:checked +.lbl{
+  border: 2px solid #355C7D;
+}
