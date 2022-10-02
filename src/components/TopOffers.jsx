@@ -1,24 +1,19 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Navigation} from 'swiper';
 import {MdArrowForwardIos} from 'react-icons/md'
 import { useDispatch  } from 'react-redux/es/exports';
-import {
-  addToCart,
-} from "../features/cartSlice";
-import { FaCartPlus} from 'react-icons/fa'
+
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
+
 
 
 import axios from 'axios';
 import {useState , useEffect} from 'react';
-import { Link } from 'react-router-dom';
-import SkeltonCard from './SkeltonCard';
+
 
 
 export default function TopOffers() {
@@ -78,6 +73,8 @@ export default function TopOffers() {
 <Swiper  className='w-11/12 flex md:hidden'
      spaceBetween={10}
      slidesPerView={3}
+     modules={[Navigation]}
+     navigation={true}
  
     >
     {products && products.map((product)=>(

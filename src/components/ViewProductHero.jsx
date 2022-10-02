@@ -1,10 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import {
-  showCart,
   addToCart,
-  removeAll,
-  removeItem,
+
 } from "../features/cartSlice";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import "swiper/css";
@@ -16,6 +14,10 @@ export default function ViewProductHero({ product }) {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const [qty, setQty] = useState(1);
+    const [clr, setClr] = useState("");
+    const [size, setSize] = useState("");
+    const [clrErr, setClrErr] = useState("")
+    const [sizeErr, setSizeErr] = useState("")
 
   const incQty = () => {
     setQty((prev) => prev + 1);
@@ -25,16 +27,27 @@ export default function ViewProductHero({ product }) {
     setQty((prev) => prev - 1);
   };
   const handleATC = (product) => {
-    const tempProduct = {
-      qty: qty,
-      product: product,
+    // here will be condion of  if product.sizes && size === ""
+    if(size === ''){
+      setSizeErr('Select a sieze firsrt')
+          // here will be condion of  if product.clrs && clr === ""
+    }else if (clr === ''){
+      setSizeErr('')
+      setClrErr('Please Select a coulr first ')
+    }else {
+      const tempProduct = {
+        qty: qty,
+        product: product,
+        clr : clr,
+        size : size
+      };
+      dispatch(addToCart(tempProduct));
+      setClrErr('')
+      setSizeErr('')
+    }
+  
     };
-    dispatch(addToCart(tempProduct));
-  };
 
-
-  const [clr, setClr] = useState("clr2");
-  const [size, setSize] = useState("lg");
 
 const handleClr = (event) => {
     setClr(event.target.value)
@@ -114,25 +127,25 @@ const handleSize = (event) => {
               </div>
               {product && !product.sizes ? (
                 <div className=" ml-4 my-3">
-                  <p className="mb-3 text-[#355C7D]">sizes</p>
+                  <p className="mb-3 text-[#355C7D]">sizes <small className="text-red-400 ml-2">{sizeErr}</small></p>
 
-                    <input type="radio" className="" name="desk-size" id="sx" value="sx"  onChange={handleSize} checked={size === 'sx'}/>
+                    <input className="hidden" type="radio"  name="desk-size" id="sx" value="sx"  onChange={handleSize} checked={size === 'sx'}/>
                   <label htmlFor="sx" className="lbl lbl-box" >
                     <span className="size-text">sx</span>
                   </label>
 
-                    <input type="radio" name="desk-size" id="s" value="s" onChange={handleSize} checked={size === 's'}/>
+                    <input className="hidden" type="radio" name="desk-size" id="s" value="s" onChange={handleSize} checked={size === 's'}/>
                   <label htmlFor="s"  className="lbl lbl-box">
                     <span className="size-text">s</span>
                   </label>
 
-                    <input type="radio" name="desk-size" id="md" value="md" onChange={handleSize} checked={size === 'md'}/>
-                  <label htmlFor="m"  className="lbl lbl-box">
+                    <input className="hidden" type="radio" name="desk-size" id="md" value="md" onChange={handleSize} checked={size === 'md'}/>
+                  <label htmlFor="md"  className="lbl lbl-box">
                     <span className="size-text">md</span>
                   </label>
 
-                    <input type="radio" name="desk-size" id="lg" value="lg" onChange={handleSize} checked={size === 'lg'}/>
-                  <label htmlFor="l"  className="lbl lbl-box">
+                    <input className="hidden" type="radio" name="desk-size" id="lg" value="lg" onChange={handleSize} checked={size === 'lg'}/>
+                  <label htmlFor="lg"  className="lbl lbl-box">
                     <span className="size-text">lg</span>
                   </label>
                 </div>
@@ -142,14 +155,14 @@ const handleSize = (event) => {
 
               {product && !product.colours ? (
                 <div className="ml-4 my-6">
-                  <p className="mb-3 text-[#355C7D]">Colour  </p>
-                    <input type="radio" name="colorr" id="red"  className="hidden" value="clr1" checked={clr === 'clr1'} onChange={handleClr} />
-                  <label htmlFor="red" className="lbl lbl-box ml-6">
+                  <p className="mb-3 text-[#355C7D]">Colour  <small className="ml-2 text-red-400">{clrErr}</small></p>
+                    <input type="radio"  name="colorr" id="red"  className="hidden" value="red" checked={clr === 'red'} onChange={handleClr} />
+                  <label htmlFor="red" className="lbl lbl-box ">
                     <span className="color-text">redd</span>
                   </label>
 
-                    <input type="radio" name="colorr" id="blue" checked={clr === 'clr2'}  className="hidden" value="clr2"  onChange={handleClr}/>
-                  <label htmlFor="blue" className="lbl lbl-box ml-6">
+                    <input type="radio" name="colorr" id="blue" checked={clr === 'blue'}  className="hidden"  value="blue"  onChange={handleClr}/>
+                  <label htmlFor="blue" className="lbl lbl-box ">
                     <span className="color-text">blue</span>
                   </label>
                 </div>
@@ -203,8 +216,8 @@ const handleSize = (event) => {
             </div>
           </div>
         </div>
-      ) : (
-        <div className="viewproduct-hero-main-container">
+      ) : (<>
+        <div className="viewproduct-hero-main-container hidden md:flex" >
           <div className="viewproduct-hero-inner ">
             <div className="viewproduct-hero-inner-left  ">
               <div className="inner-grid mt-3">
@@ -279,8 +292,25 @@ const handleSize = (event) => {
             </div>
           </div>
         </div>
+
+        {/* skelton for phone */}
+        <div className="py-3">
+          <div className="skelton rounded-md mx-4 h-48 mb-5"></div>
+         <div className="w-10/12 mx-auto">
+         <div className=" text-skelton "></div>
+          <div className="text-skelton "></div>
+          <div className="text-skelton"></div>
+          <div className="text-skelton"></div>
+          <div className="text-skelton"></div>
+         </div>
+          <div className="flex  mx-6 py-4">
+            <div className="text-skelton py-4"></div>
+            <div className="text-skelton py-4"></div>
+          </div>
+        </div>
+        </>
       )}
-      <div className="block md:hidden bg-white  my-4">
+      <div className="block md:hidden bg-gray-100 py-3  my-4">
         
         {product ? ( <div className="flex flex-col ">
           <div className="">
@@ -315,7 +345,7 @@ const handleSize = (event) => {
 
 
 
-            <p className="ml-3 text-gray-400">Sizes : </p>
+            <p className="ml-3 text-gray-400">Sizes :  <small className="text-red-400"> {sizeErr}</small></p>
           <div id="pScreen-sizes" className="flex flex-row gap-5 mb-4 justify-center ">
 
               <input type="radio" name="size"   className="hidden" id="size1" value='sx' onChange={handleSize} checked={size === 'sx'} />
@@ -343,20 +373,20 @@ const handleSize = (event) => {
 
 
 
-          <p className="ml-3 text-gray-400">Colours : </p>
+          <p className="ml-3 text-gray-400">Colours :  <small className="ml-2 text-red-400"> {clrErr}</small></p>
           <div id="pScreen-colors" className="flex flex-row gap-5 mb-4 justify-center ">
-              <input type="radio"  name="color" checked={clr === 'clr1'}  className="hidden" value="clr1" id="clr1" onChange={handleClr} />
-              <label htmlFor="clr1" className="lbl inline-flex justify-center items-center  w-12 h-12 border-2 border-white bg-blue-300 rounded-md">
+              <input type="radio"  name="color" checked={clr === 'blue'}  className="hidden" value="blue" id="blue" onChange={handleClr} />
+              <label htmlFor="blue" className="lbl inline-flex justify-center items-center  w-12 h-12 border-2 border-white bg-blue-300 rounded-md">
               <span className="text-[12px] font-bold">blue</span>
               </label>
 
-              <input type="radio"  name="color" checked={clr === 'clr2'}  className="hidden" value="clr2" id="clr2" onChange={handleClr}/>
-            <label htmlFor="clr2" className=" lbl inline-flex justify-center items-center w-12 h-12 border-2 border-white bg-red-300 rounded-md">
+              <input type="radio"  name="color" checked={clr === 'red'}  className="hidden" value="red" id="red" onChange={handleClr}/>
+            <label htmlFor="red" className=" lbl inline-flex justify-center items-center w-12 h-12 border-2 border-white bg-red-300 rounded-md">
             <span className="text-[12px] font-bold">red</span>
               </label>
               
-              <input type="radio" name="color" checked={clr === 'clr3'}  className="hidden" value="clr3" id="clr3" onChange={handleClr}/>
-              <label htmlFor="clr3" className="lbl inline-flex justify-center items-center  w-12 h-12 border-2 border-white bg-green-300 rounded-md">
+              <input type="radio" name="color" checked={clr === 'green'}  className="hidden" value="green" id="green" onChange={handleClr}/>
+              <label htmlFor="green" className="lbl inline-flex justify-center items-center  w-12 h-12 border-2 border-white bg-green-300 rounded-md">
               <span className="text-[12px] font-bold">green</span>
 
               </label>

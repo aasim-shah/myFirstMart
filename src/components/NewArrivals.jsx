@@ -1,19 +1,17 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useDispatch  } from 'react-redux/es/exports';
-import {
-  addToCart,
-} from "../features/cartSlice";
+import { Navigation} from 'swiper';
+
+
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
+
 
 
 import axios from 'axios';
 import {useState , useEffect} from 'react';
-import {FaPlus , FaCartPlus} from 'react-icons/fa'
 
 
 export default function NewArrivals() {
@@ -73,7 +71,8 @@ export default function NewArrivals() {
 <Swiper  className='w-11/12 flex md:hidden'
      spaceBetween={10}
      slidesPerView={3}
-  
+      modules={[Navigation]}
+      navigation={true}
     >
     {products && products.map((product)=>(
         <SwiperSlide key={product.id} className='top-offer-slide bg-gray-100 pb-2 rounded-md'>

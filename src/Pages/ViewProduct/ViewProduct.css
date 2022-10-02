@@ -139,8 +139,18 @@
   top: 1rem;
 }
 .swiper-button-prev , .swiper-button-next{
-  color: #bacad7;
-  margin: 0px 1rem;
+  color: #355C7D;
+  margin: 0px .5rem;
+  opacity: .8;
+}
+
+.swiper-button-prev::after , .swiper-button-next::after{
+  font-size: 2rem;
+}
+
+.swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled {
+opacity: 0.25;
+
 }
 .lbl-box{
   display: inline-flex;
@@ -148,6 +158,7 @@
   height: 2.4rem;
   border-radius: 3px;
   justify-content: center;
+  margin-left: 1rem;
   align-items: center;
   background-color: rgba(128, 128, 128, 0.412);
 }

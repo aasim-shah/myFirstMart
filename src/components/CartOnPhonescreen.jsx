@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from "react-redux/es/exports";
+import { useState } from "react";
 import {
   addToCart,
   removeAll,
@@ -11,6 +12,8 @@ import {BsArrowLeft} from 'react-icons/bs'
 export default function CartOnPhonescreen() {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
+
+ 
 
   return (
     <><div id="overlay" onClick={()=>{dispatch(showCart())}}></div>
@@ -39,26 +42,30 @@ export default function CartOnPhonescreen() {
                     <img
                       src={cartItem.image}
                       alt=""
-                      className="w-[5rem] h-[4rem] mx-auto"
+                      className="w-[5rem] h-[5rem] mx-auto"
                     />
                   </div>
-                  <div className="col-span-9 flex flex-col">
-                    <p className="title px-1 py-2 text-[14px] font-bold">
-                      {cartItem.title.slice(0, 50)} ...
+                  <div className="col-span-9 flex bg-gray-100 relative flex-col">
+                    <p className="title px-1 py-2 h-12  text-[14px] font-bold ">
+                    <span>{cartItem.title.slice(0, 40)} ...</span>  
                     </p>
+                    <div className="absolute top-7 right-4">
+                      <small>clr : {cartItem.clr}<span className={`inline-flex w-3 h-3 mx-1 rounded-sm bg-${cartItem.clr}-500`}></span></small>, 
+                      <small className="ml-2"> size : {cartItem.size} </small>
+                    </div>
                     <div className="qty-price  flex  mx-3  mt-1 flex-row justify-between">
                       <div className="qty flex flex-row gap-5">
                         <AiOutlineMinus
                           color="green"
                           onClick={() => {
-                            dispatch(removeItem(cartItem));
+                            dispatch(removeItem(cartItem ));
                           }}
                           size={20}
                         />
                         <AiOutlinePlus
                           color="green"
-                          onClick={() => {
-                            dispatch(addToCart({ qty: 3, product: cartItem }));
+                          onClick={()=>{
+                            dispatch(addToCart({product : cartItem , qty :0 , clr: cartItem.clr , size : cartItem.size}))
                           }}
                           size={20}
                         />

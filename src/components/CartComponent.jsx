@@ -12,6 +12,7 @@ import {MdDeleteSweep} from 'react-icons/md'
 export default function CartComponent() {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
+  console.log(cart)
   const itemsInCart = cart.itemsInCart;
   const hideCart = () => {
     dispatch(showCart());
@@ -48,7 +49,7 @@ setTimeout(() => {
                   <th>Price</th>
                 </thead>
                   <tbody>
-                    <tr key={cartItem.id} className="">
+                    <tr  className="">
                       <td>&nbsp;</td>
                       <td></td>
                       <td></td>
@@ -57,6 +58,7 @@ setTimeout(() => {
                     <tr>
                       <td>
                         <img
+                        key={cartItem.id}
                           className="w-28 h-28 rounded-md"
                           src={cartItem.image}
                           alt=""
@@ -64,6 +66,14 @@ setTimeout(() => {
                       </td>
                       <td className="  font-semibold text-sm">
                         {cartItem.title.slice(0 , 52)} ....
+                        <div className="flex justify-between mx-5 w-9/12 md:5/12 pt-3">
+                            <div className="left">
+                              <small className="text-yellow-300">Colour : {cartItem.clr}</small>
+                            </div>
+                            <div className="right">
+                              <small className="text-yellow-300">Size : {cartItem.size}</small>
+                            </div>
+                        </div>
                       </td>
                       <td>
                         <button
@@ -77,7 +87,7 @@ setTimeout(() => {
                         <span className="mx-3 font-bold ">{cartItem.quantity}</span>
                         <button
                           onClick={() => {
-                            dispatch(addToCart({product : cartItem , qty :0}));
+                            dispatch(addToCart({product : cartItem , qty :0 , clr: cartItem.clr , size : cartItem.size}));
                           }}
                           className="py-1 px-2 bg-yellow-300 text-black rounded-sm "
                         >
