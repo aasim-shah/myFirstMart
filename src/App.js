@@ -7,7 +7,10 @@ import Signuppage from './Pages/Signuppage/Signuppage';
 import { useSelector , useDispatch } from "react-redux";
 import Cartpage from './Pages/Cartpage/Cartpage';
 import Adminhome from './Pages/Adminhome/Adminhome';
-
+import AdminAddProduct from './Pages/Adminhome/AdminAddProduct';
+import AdminEditProduct from './Pages/Adminhome/AdminEditProduct';
+import AdminViewProducts from './Pages/Adminhome/AdminViewProducts';
+import NoPageFound from './Pages/NoPageFound';
 
 function App() {
   const dispatch = useDispatch()
@@ -22,6 +25,10 @@ function App() {
     <Route path="/signup" element={<Signuppage />} />
     <Route path="/cart" element={<Cartpage />} />
     <Route path="/admin" element={auth.isAdmin  ?<Adminhome/> : <Navigate to='/login' />  } />
+    <Route path="/admin/add_product" element={auth.isAdmin  ?<AdminAddProduct/> : <Navigate to='/login' />  } />
+    <Route path="/admin/view_products" element={auth.isAdmin  ?<AdminViewProducts/> : <Navigate to='/login' />  } />
+    <Route path="/admin/edit_product/:id" element={auth.isAdmin  ?<AdminEditProduct/> : <Navigate to='/login' />  } />
+    <Route path="/*"  element={ <NoPageFound/>} />
   </Routes>
     )
 

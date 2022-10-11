@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation} from 'swiper';
 import {MdArrowForwardIos} from 'react-icons/md'
 import { useDispatch  } from 'react-redux/es/exports';
-
+import { Link } from 'react-router-dom';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -52,7 +52,8 @@ export default function TopOffers() {
   
     >
     {products && products.map((product)=>(
-        <SwiperSlide key={product.id} className='top-offer-slide bg-gray-100 pb-2 rounded-md'>
+        <SwiperSlide  key={product.id} className='top-offer-slide bg-gray-100 pb-2 rounded-md'>
+          <Link to={`/product/${product.id}`}>
        <div className="to-img mb-2">
         <img src={product.image} className='w-full h-40' alt="" />
        </div>
@@ -62,7 +63,7 @@ export default function TopOffers() {
        <div className="to-price ml-4">
         <span>From</span>
         <span className='ml-2'> RS.3432</span>
-       </div>
+       </div></Link>
     </SwiperSlide>
     ))}
 </Swiper>
@@ -79,6 +80,7 @@ export default function TopOffers() {
     >
     {products && products.map((product)=>(
         <SwiperSlide key={product.id} className='top-offer-slide bg-gray-100 pb-2 rounded-md'>
+          <Link to={`/product/${product.id}`}>
        <div className="to-img mb-2">
         <img src={product.image} className='w-full h-40' alt="" />
        </div>
@@ -88,7 +90,7 @@ export default function TopOffers() {
         <div className="to-price ml-4">
         <small>From</small>
         <span className='ml-2'> Rs.3432</span>
-       </div>
+       </div></Link>
        {/* <button onClick={()=>{dispatch(addToCart({qty : 1, product : product}))}} className=' flex flex-row justify-center py-1 w-20  py-2 rounded-md mt-2 text-white font-bold  bg-[#355C7D]  mx-auto items-center '><FaCartPlus/></button> */}
     </SwiperSlide>
     ))}

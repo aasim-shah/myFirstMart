@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import { MdDeleteSweep } from "react-icons/md";
 import { useDropzone } from "react-dropzone";
 
-export default function _AddProduct() {
+export default function _UpdateProduct() {
   const [files, setFiles] = useState([]);
   const [gall, setGall] = useState([]);
   const [headingText, setHeadingText] = useState("general");
@@ -84,11 +84,8 @@ try {
             gallary: gall,
             specifications: fields,
           };
-        const third = await    axios.post("http://localhost:3001/api/v1/add_new", allData)
+        const third = await    axios.post("http://localhost:3001/dd", allData)
         console.log(third.data , 'third data')
-        if(third){
-          console.log('reload page')
-        }
     
         }else{
           console.log('click upload gall button to upload selected files first')
@@ -132,7 +129,7 @@ try {
   return (
     <>
       <div className="form-main-container my-5 w-11/12 mx-auto md:w-[76%] mr-5 ml-auto ">
-        <p className="text-xs font-bold ml-3 my-1">*Add New Product</p>
+        <p className="text-xs font-bold ml-3 my-1">Edit Product</p>
         <form >
           <div className="bg-gray-200 py-2 rounded-md mb-2">
             <div className="input-div w-full flex flex-row items-center justify-center mt-3">
