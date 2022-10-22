@@ -12,7 +12,7 @@ function ViewProduct() {
   const [singleProduct, setSingleProduct] = useState(null)
   const {id} = useParams()
 const getProductDetails = async()=>{
-  const ress = await axios.get(`https://fakestoreapi.com/products/${id}`);
+  const ress = await axios.get(`http://localhost:3001/api/v1/products/${id}`);
   setSingleProduct(ress.data)
 }
 useEffect(() => {

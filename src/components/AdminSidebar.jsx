@@ -37,7 +37,7 @@ export default function AdminSidebar({setViewSidebar }) {
 
   return (
     <>
-    <div className=" w-6/12 shadow-lg shadow-black top-0 sm:top-10 sm:w-3/12 md:w-[21%] absolute bg-gray-200  h-[100vh] sm:h-[95vh]  rounded-md ">
+    <div className=" w-6/12 shadow-lg shadow-black top-0 sm:top-10 sm:w-3/12 md:w-[21%] absolute bg-gray-200  h-[100vh] sm:h-[95vh]  ">
       <span className="flex sm:hidden float-right right-3 top-2 absolute text-xl font-bold" onClick={()=>{setViewSidebar(false)}}>x</span>
       <div className="dashboard  pt-12   flex justify-center items-center">
         <p className="text-[1.5rem] my-10 font-bold text-[#355b7d] italic">

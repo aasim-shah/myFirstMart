@@ -70,7 +70,7 @@ export default function BestSeller() {
               <div className="card-ratings my-2">
                 <span className="rating-stars">{product.rating.rate}<i className="fa-solid fa-star text-sm ml-2 text-yellow-600"></i> </span>
                 <span className="rating-count ml">({product.rating.count})</span>
-                <div className='bg-[#355C7D] text-white font-bold py-2 px-6 inline-flex rounded-md ml-12  '>Add To Bag</div>
+                <div className='themeClrBg  text-white font-bold py-2 px-6 inline-flex rounded-md ml-12  '>Add To Bag</div>
               </div>
              
             </div>
@@ -113,7 +113,7 @@ export default function BestSeller() {
               <div className="card-ratings my-2">
                 <span className="rating-stars">{product.rating.rate}<i className="fa-solid fa-star text-sm ml-2 text-yellow-600"></i> </span>
                 <span className="rating-count ml">({product.rating.count})</span>
-                <div className='bg-[#355C7D] text-white font-bold py-2 px-6 inline-flex rounded-md ml-12  '>Add To Bag</div>
+                <div className='themeClrBg  text-white font-bold py-2 px-6 inline-flex rounded-md ml-12  '>Add To Bag</div>
               </div>
              
             </div>

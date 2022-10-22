@@ -1,14 +1,9 @@
 
 import axios from 'axios';
 import {useState , useEffect} from 'react';
-import {FaPlus} from 'react-icons/fa'
 import { Link } from 'react-router-dom';
 import SkeltonCard from './SkeltonCard';
 import { useDispatch  } from 'react-redux/es/exports';
-import {
-  addToCart,
-} from "../features/cartSlice";
-
 
 
 
@@ -19,7 +14,8 @@ function SuggestedProducts() {
 
 // get data from api
   const getProducts = async () => {
-    const res = await axios.get('https://fakestoreapi.com/products/');
+    const res = await axios.get('http://localhost:3001/api/v1/');
+    console.log(res.data)
     setProducts(res.data);
   }
 
@@ -39,8 +35,8 @@ function SuggestedProducts() {
       </div>
       <div className="card-container ">
        {products.length > 0 ? (products.slice(0, 14).map((product , index) => (
-          <div className="card-inner" key={product.id}>
-            <Link to={`/product/${product.id}`}   className="card-inner-a">
+          <div className="card-inner" key={product._id}>
+            <Link to={`/product/${product._id}`}   className="card-inner-a">
             <img src={product.image} alt="" className="card-img-a" />
             <small className="free-courses">{product.category}</small>
             <div className="card-title">
@@ -58,9 +54,9 @@ function SuggestedProducts() {
                 </div>
   
                 <div className="card-ratings flex justify-between items-center mt-2">
-                <div className="l">  <span className="rating-stars">{product.rating.rate}<i className="fa-solid fa-star text-sm ml-2 text-yellow-600"></i> </span>
-                  <span className="rating-count text-[13px] ml-1">{product.rating.count}</span></div>
-                  {/* <button onClick={()=>{dispatch(addToCart({qty : 1, product : product}))}} className='border-2 z-[4] border-[#355C7D] hover:bg-[#355C7D] hover:text-white   flex flex-row justify-between items-center rounded-[2rem] px-3 py-1'><FaPlus/><span className='ml-3'>Add</span></button> */}
+                <div className="l">  <span className="rating-stars">{product.rating.ratings}<i className="fa-solid fa-star text-sm ml-2 text-yellow-600"></i> </span>
+                  <span className="rating-count text-[13px] ml-1">{product.rating.ratingCount}</span></div>
+                  {/* <button onClick={()=>{dispatch(addToCart({qty : 1, product : product}))}} className='border-2 z-[4] border-[#355C7D] hover:themeClrBg  hover:text-white   flex flex-row justify-between items-center rounded-[2rem] px-3 py-1'><FaPlus/><span className='ml-3'>Add</span></button> */}
 
                 </div>
               </div>
@@ -92,7 +88,7 @@ function SuggestedProducts() {
         <p className="font-bold mb-0 pt-2">
           Recommended  
         </p>
-        <div className="viewMore bg-[#355C7D] py-1 px-4 rounded-[2rem] text-white font-bold">
+        <div className="viewMore themeClrBg  py-1 px-4 rounded-[2rem] text-white font-bold">
           More
         </div>
       </div>
@@ -115,7 +111,7 @@ function SuggestedProducts() {
                   <span>RS : </span>
                   <span className='text-green-800'>{"$"+product.price}</span>
                 </div>
-                {/* <button onClick={()=>{dispatch(addToCart({qty : 1, product : product}))}} className=' flex flex-row justify-center py-1 px-2 rounded-md mt-2 text-white font-bold  bg-[#355C7D]  w-full items-center '><FaPlus/><span className='ml-3'>Add</span></button> */}
+                {/* <button onClick={()=>{dispatch(addToCart({qty : 1, product : product}))}} className=' flex flex-row justify-center py-1 px-2 rounded-md mt-2 text-white font-bold  themeClrBg   w-full items-center '><FaPlus/><span className='ml-3'>Add</span></button> */}
             </div>
           </div>
   ))) : ( 

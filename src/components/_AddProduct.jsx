@@ -152,7 +152,7 @@ try {
             </div>
 
             <div className="input-div w-full flex flex-row items-center justify-center mt-3 mb-1">
-              <p className="font-bold  mr-4 hidden md:block">Product Name : </p>
+              <p className="font-bold  mr-4 hidden md:block">Product Description : </p>
               <input
                 type="text"
                 name="description"

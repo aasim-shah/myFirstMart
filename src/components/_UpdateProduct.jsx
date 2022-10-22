@@ -2,9 +2,20 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import { MdDeleteSweep } from "react-icons/md";
+import {useParams  } from 'react-router-dom'
 import { useDropzone } from "react-dropzone";
 
 export default function _UpdateProduct() {
+  let { id } = useParams(); 
+  const [product, setProduct] = useState({})
+
+ 
+  
+
+
+
+
+
   const [files, setFiles] = useState([]);
   const [gall, setGall] = useState([]);
   const [headingText, setHeadingText] = useState("general");
@@ -45,6 +56,33 @@ export default function _UpdateProduct() {
     setUpperFields({ ...upperFields, [e.target.name]: e.target.value });
   };
 
+
+
+
+  const getProduct = async ()=>{
+    const res = await axios.get(`http://localhost:3001/api/v1/products/${id}`)
+    const data = res.data;
+    setProduct(data)
+    setUpperFields({ name :data.title , description : data.description , price : data.price})
+    
+     data.specifications.map((item) => {
+      console.log(item)
+    setFields([
+      ...fields , {
+        id: item._id,
+        heading: item.heading,
+        headings : [item.heading ],
+        name: '',
+        value: ''
+      }
+    ])  
+    })
+    console.log(fields)
+  }
+
+  useEffect(() => {
+   getProduct()
+  }, [id])
 
   const handleGallary = async (e) => {
     e.preventDefault()
@@ -142,7 +180,7 @@ try {
                 onChange={(e) => {
                   handleUpperFields(e);
                 }}
-                value={upperFields.name || ""}
+                value={upperFields.name || ''}
                 placeholder="Product name .."
                 className="w-9/12 border-2 border-gray-300 py-1 px-3"
               />
@@ -181,7 +219,7 @@ try {
 
           <div className="dynamicFieldsContainer rounded-md bg-gray-200  py-3">
             {fields.map((item, index) => (
-              <div key={index}>
+              <div key={item.id}>
                 <p className="font-bold text-sm mx-3 mt-2">
                   {item.headings.length > 0
                     ? item.headings[item.headings.length - 1] + " : "
@@ -235,7 +273,7 @@ try {
                   className="font-bold  py-1 px-2 bg-white w-full rounded-md mt-1 md:w-auto mr-1"
                 >
                   {" "}
-                  Add Heading
+                  Add Heading 
                 </button>
               </div>
               <button
