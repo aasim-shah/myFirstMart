@@ -156,7 +156,7 @@ export default function CartComponent() {
               <option value="cashOnDelivery">Cash On Delivery</option>
             </select>
             <Link
-              to="#"
+              to="/comfirm_order"
               className="bg-orange-400 py-1 px-4 rounded-md mt-3 font-bold"
             >
               Procced to Pay

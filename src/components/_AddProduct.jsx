@@ -88,6 +88,7 @@ try {
         console.log(third.data , 'third data')
         if(third){
           console.log('reload page')
+          window.location="/admin"
         }
     
         }else{

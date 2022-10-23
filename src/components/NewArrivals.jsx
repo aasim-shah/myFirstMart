@@ -24,7 +24,7 @@ export default function NewArrivals() {
 
     // get data from api
       const getProducts = async () => {
-        const res = await axios.get('https://fakestoreapi.com/products/');
+        const res = await axios.get('http://localhost:3001/api/v1');
         setProducts(res.data);
       }
     
@@ -50,7 +50,7 @@ export default function NewArrivals() {
      slidesPerView={5}
 
     >
-    {products && products.map((product)=>(
+    {products && products.reverse().map((product)=>(
         <SwiperSlide  key={product.id} className='top-offer-slide bg-gray-100 pb-2 rounded-md'>
                     <Link to={`/product/${product.id}`}>
 

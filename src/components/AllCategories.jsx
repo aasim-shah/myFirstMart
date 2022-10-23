@@ -26,9 +26,9 @@ function AllCategories() {
       <div className="card-container">
 
         <div className="card-inner-tut">
-          <img src="images/ecom.png" alt="" className="card-img" />
+          <img src="images/mens.png" alt="" className="card-img" />
           <div className="card-title">
-            Lorem ipsum dolor sit amet.
+            MENS
           </div>
          
         </div>
@@ -37,27 +37,27 @@ function AllCategories() {
 
 
         <div className="card-inner-tut">
-          <img src={"images/ecom1.png"} alt="" className="card-img" />
+          <img src={"images/womens-category.jpg"} alt="" className="card-img" />
           <div className="card-title">
-            Lorem ipsum dolor sit amet.
+           WOMENS
           </div>
           
         </div>
 
 
         <div className="card-inner-tut">
-          <img src={"images/ecom3.png"} alt="" className="card-img" />
+          <img src={"images/fasion.png"} alt="" className="card-img" />
           <div className="card-title">
-            Lorem ipsum dolor sit amet.
+            FASION
           </div>
           
         </div>
 
         
         <div className="card-inner-tut">
-          <img src={"images/ecom.png"} alt="" className="card-img" />
+          <img src={"images/girl-fashion.jpg"} alt="" className="card-img" />
           <div className="card-title">
-            Lorem ipsum dolor sit amet.
+            KIDS
           </div>
        
         </div>

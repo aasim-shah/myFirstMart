@@ -10,6 +10,7 @@ import Adminhome from './Pages/Adminhome/Adminhome';
 import AdminAddProduct from './Pages/Adminhome/AdminAddProduct';
 import AdminEditProduct from './Pages/Adminhome/AdminEditProduct';
 import AdminViewProducts from './Pages/Adminhome/AdminViewProducts';
+import ConfirmOrder from './Pages/ConfirmOrder/ConfirmOrder';
 import NoPageFound from './Pages/NoPageFound';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
     <Route path="/login"  element={auth.isAuthanticated ? <Navigate to='/' />  : <Loginpage/>}/>
     <Route path="/signup" element={<Signuppage />} />
     <Route path="/cart" element={<Cartpage />} />
+    <Route path="/comfirm_order" element={<ConfirmOrder />} />
     <Route path="/admin" element={auth.isAdmin  ?<Adminhome/> : <Navigate to='/login' />  } />
     <Route path="/admin/add_product" element={auth.isAdmin  ?<AdminAddProduct/> : <Navigate to='/login' />  } />
     <Route path="/admin/view_products" element={auth.isAdmin  ?<AdminViewProducts/> : <Navigate to='/login' />  } />

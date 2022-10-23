@@ -29,8 +29,8 @@ rtl={false}
             <div className="shop flex flex-col">
               <p className="th font-bold mb-4">Shop</p>
               <p className="td">Shop Men</p>
-              <p className="td">Shop Men</p>
-              <p className="td">Shop Men</p>
+              <p className="td">Shop Women</p>
+              <p className="td">Shop Kids</p>
             </div>
             <div className="links">
             <p className="th font-bold mb-4">Links</p>

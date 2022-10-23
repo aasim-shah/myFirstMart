@@ -8,6 +8,7 @@ import {
 } from "../features/cartSlice";
 import { AiOutlineMinus, AiOutlinePlus, AiFillDelete } from "react-icons/ai";
 import {BsArrowLeft} from 'react-icons/bs'
+import { Link } from "react-router-dom";
 
 export default function CartOnPhonescreen() {
   const dispatch = useDispatch();
@@ -96,9 +97,9 @@ export default function CartOnPhonescreen() {
             <span>RS. {cart.totalCount.toFixed(2)}</span>
           </div>
           <div className="checkout flex flex-row justify-center mt-2">
-            <button className="bg-green-800 w-11/12 text-white py-2 rounded-md  font-bold">
+            <Link to="/comfirm_order" className="bg-green-800 w-11/12 flex flex-row justify-center text-white py-2 rounded-md  font-bold">
               CheckOut
-            </button>
+            </Link>
           </div>
         </div>) : (<>
                 <div className="w-full absolute">

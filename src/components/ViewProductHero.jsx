@@ -255,7 +255,7 @@ export default function ViewProductHero({ product }) {
                   onClick={() => {
                     handleATC(product);
                   }}
-                  className="bg-yellow-300 w-full rounded-sm py-1"
+                  className="bg-black text-white w-full rounded-sm py-1"
                 >
                   Add To Bag
                 </button>
@@ -333,7 +333,7 @@ export default function ViewProductHero({ product }) {
                   <button className="themeClrBg  text-white w-full mr-2 rounded-sm skelton">
                     Buy Now
                   </button>
-                  <button className="bg-yellow-300 w-full text-white rounded-sm py-1 skelton">
+                  <button className="bg-black  w-full text-white rounded-sm py-1 skelton">
                     Add To Bag
                   </button>
                 </div>

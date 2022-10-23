@@ -94,8 +94,8 @@ function SuggestedProducts() {
       </div>
       <div className="card-container ">
        {products.length > 0 ? (products.slice(0, 6).map((product , index) => (
-          <div className="card-inner-phone" key={product.id}>
-            <Link to={`/product/${product.id}`}   className="card-inner-a">
+          <div className="card-inner-phone" key={product._id}>
+            <Link to={`/product/${product._id}`}   className="card-inner-a">
             <img src={product.image} alt="" className="card-img-a mx-auto" />
             <small className="free-courses">{product.category}</small>
             <div className="text-sm text-blue-400">

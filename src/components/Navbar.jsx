@@ -26,7 +26,7 @@ function Navbar() {
   const [filtered, setFiltered] = useState([]);
 
   const getProducts = async () => {
-    const res = await axios.get("https://fakestoreapi.com/products/");
+    const res = await axios.get("http://localhost:3001/api/v1");
     setProducts(res.data);
   };
   //whenever search value gets updated, we will update patience list
@@ -49,7 +49,7 @@ function Navbar() {
       <div className="black-strap">Limited Stocks remaining. Shop Now</div>
       <div className="nav py-3 px-6">
         <div>
-          <Link to="/"> Enn Mart</Link>
+          <Link to="/" className="text-xl font-bold themeClrText"> Buy And Grab</Link>
         </div>
         <div className="search-bar hidden relative md:block">
           <input
